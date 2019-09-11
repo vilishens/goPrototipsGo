@@ -1,0 +1,132 @@
+{{ define "pointlist-body" }}
+    <main role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <span id="allPointList">
+                {{ range $k, $v := allPointData.List }}
+                    {{ $pt := index allPointData.Data $v }}
+                    {{ $btnclass := "btn-warning" }} 
+                    {{ $aive := "gims" }}                    
+ 
+                    <div class="dropdown">
+
+                        {{/*
+                        {{ if not $pt.Signed }}
+                            {{ $btnclass := "bnt-secondary" }}
+                        {{ else }}
+                            {{ if and $pt.Signed not $pt.Disconnected }}
+                               {{ $btnclass := "btn-success"}}  
+          
+                            {{ end }}    
+                        {{ end }}  
+                     */}}
+
+                        {{ if and $pt.Signed (not $pt.Disconnected) }} 
+                            {{ $btnclass = "btn-success"}}  
+                            {{ $aive = "botvin" }}
+                        {{ else if not $pt.Signed }}
+                           {{ $btnclass = "btn-secondary" }}
+                           {{ $aive = "shadow" }}
+                        {{ else if and $pt.Signed $pt.Disconnected }}
+                           {{ $btnclass = "btn-danger button-blink" }}                     
+                           {{ $aive = "part" }}
+                        {{ else }}
+                          {{ $btnclass = "btn-warning" }}                     
+                           {{ $aive = "icipants" }}
+                        {{ end }}
+   
+
+
+                       <button class="btn {{ $btnclass }} dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ $v }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="point/cfg/{{ $v }}">Configuration</a>
+                            {{ if $pt.Signed }} 
+                                {{ if $pt.Disconnected }}
+                                    <a class="dropdown-item" href="point/action/restart/{{ $v }}">Restart</a>
+                                {{ end }}
+                            {{ end }}    
+                        </div>
+                    </div>
+
+
+
+
+
+{{/*
+
+                    <button type="button" class="btn btn-outline-primary">{{ $v }}</button>
+                    */}}
+
+
+{{/*
+                        <div class="row mt-2">
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" 
+                                role="button" id="pointChoice" data-toggle="dropdown" 
+                                data-toggle="tooltip" data-placement="right" title={{ $k }}
+                                aria-haspopup="true" aria-expanded="false">                    
+                            <div class="btn-group dropright">
+                            </div>
+                        </div>    
+*/}}
+                {{ end }}
+            </span>
+        </div>
+{{/*
+<!--
+
+            {{ range $x := pointList.List }}
+               <div class="row mt-2">
+                    <div class="btn-group dropright">
+
+                        {{ $kika := index pointList.Data $x}}
+
+                        {{ $mika := $kika.Descr }} 
+
+                        {{ if $kika.Frozen }}
+                            <a class="btn btn-outline-danger dropdown-toggle" href="#" 
+                            role="button" id="pointChoice" data-toggle="dropdown" 
+                            data-toggle="tooltip" data-placement="right" title={{ $mika }}
+                            aria-haspopup="true" aria-expanded="false">                    
+                        {{ else if $kika.Active }}
+                            <a class="btn btn-outline-success dropdown-toggle" href="#" 
+                            role="button" id="pointChoice" data-toggle="dropdown" 
+                            data-toggle="tooltip" data-placement="right" title={{ $mika }}
+                            aria-haspopup="true" aria-expanded="false">                    
+                        {{ else }}             
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" 
+                            role="button" id="pointChoice" data-toggle="dropdown" 
+                            data-toggle="tooltip" data-placement="right" title={{ $mika }}
+                            aria-haspopup="true" aria-expanded="false">                    
+                        {{ end }}
+                            {{ $x }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="point/{{ $x }}/showcfg">Configuration</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+
+            {{ end }}
+
+-->
+*/}}
+    </main>
+
+{{/*
+    <script>
+        $(document).ready(function(){
+           $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
+    */}}
+{{ end }}

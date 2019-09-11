@@ -1,0 +1,69 @@
+#!/bin/bash 
+
+GO_ARDUINO_PATH="/home/vilis/0_Dev/next/go"
+#GO_ARDUINO_CMD="go run -v goArduino.go"
+GO_ARDUINO_CMD="./goArduino"
+GO_REBOOT_CMD="sudo shutdown -r now"
+CD_RESTART=64 # paredzētais
+CD_REBOOT=32
+CD_UPDATE=4096
+GO_UPDATE_CMD="./updateCode"
+
+CD=$CD_RESTART
+
+CURRENT_PATH=$(pwd)
+
+cd $GO_ARDUINO_PATH
+
+echo $GO_ARDUINO_CMD
+
+while [  $CD -eq $CD_RESTART ]; do
+    echo '#####'	
+    echo The BEFORE CD is $CD
+    echo '#####'
+    echo
+
+    $GO_ARDUINO_CMD
+
+    CD=$?		
+
+    echo
+    echo '#####'
+    echo The AFTER  CD is $CD
+    echo '#####'
+    echo
+
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+    echo
+
+    if [ $CD -eq $CD_UPDATE ];  then
+	
+
+
+	CD=$CD_RESTART
+    fi	
+done
+
+cd $CURRENT_PATH
+
+echo
+echo '*****'
+echo goArduino.go finished
+echo '*****'
+echo
+
+if [  $CD -eq $CD_REBOOT  ]; then
+
+    $GO_REBOOT_CMD
+
+fi

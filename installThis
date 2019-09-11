@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#go get -u -v github.com/apexskier/httpauth
+go get -u github.com/gorilla/mux
+go get -u github.com/jordan-wright/email
+go get -u golang.org/x/crypto/ssh
+go get -u golang.org/x/sys/unix
+
+#
+# sākt goArduino ar bootu (pirms tam jābūt - go build goArduino.go)
+#
+# /etc/rc.local pievieno /home/pi/0_dev/next/go/runA &
+#
+#
+# go instalācija
+#
+# Nepieciešamās programmas
+#
+# sudo apt-get install dnsutils (dig vajadzīgs ārējās IP adreses noteikšanai))
+#
+# a) iekopē go katalogā /home/pi/Tools/Dev/Lang/go - <GOBIN>
+# b) iestāda katalogā /home/pi/0_Dev/go saiti uz projekta go katalogu <GOPATH>
+# c) /home/pi/.profile jāieraksta:
+# go
+#
+# PATH=$PATH:/home/vilis/Tools/Dev/Langs/Go/go/bin
+# #export GOROOT=/home/vilis/Tools/Dev/Go/go/bin
+#
+# export GOPATH=/home/vilis/0_Dev/go/dev
+# export GOROOT=/home/vilis/Tools/Dev/Langs/Go/go
+#
+# # Sendgrid atslega izmanto newarduino
+# export SENDGRID_API_KEY='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'
+

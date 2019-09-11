@@ -1,0 +1,36 @@
+{{ define "cfgrelayinterval-body" }}
+{{/*    <span style="display:none" id="editReturnURL">localhost:49955/point/{{.}}/1</span>  */}}
+
+    </br></br></br>
+    
+    <div class="container">
+        <button type="button" class="btn btnMngmt btn-outline-secondary disabled" id="btnFreeze"></button>
+        <button type="button" class="btn btnMngmt btn-outline-secondary disabled" id="btnLoad"></button>
+        <button type="button" class="btn btnMngmt btn-outline-secondary disabled" id="btnSave"></button>
+        <button type="button" class="btn btnMngmt btn-outline-secondary disabled" id="btnLoadDefault"></button>
+        <button type="button" class="btn btnMngmt btn-outline-secondary disabled" id="btnLoadSaved"></button>
+        <button type="button" class="btn btnMngmt btn-warning active" id="btnEdit"></button>
+    </div>
+    
+    </br>
+    <div class="container">
+        <h1><span id='pointName'></span></h1>
+        <span id='rescanBtnSpan'></span>
+    </div>
+    </br>
+
+    <div class="container">
+        <span id='tableSpanStart'>
+        </span>
+    </div>    
+
+    <div class="container">
+        <span id='tableSpanBase'>
+        </span> 
+    </div>    
+
+    <div class="container">
+        <span id='tableSpanFinish'>
+        </span>
+    </div>    
+{{ end }}

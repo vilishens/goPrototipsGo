@@ -1,0 +1,26 @@
+.button-blinkX {
+    animation: 1s infinite blink-itX;
+    display: inline-block;
+}
+
+@keyframes blink-itX {
+    0%, 15% {
+        opacity: 0;
+    }
+    16%, 100% {
+        opacity: 1;
+    }
+}
+
+.obj-signed {
+    color: green;
+}
+
+.obj-unsigned {
+    color: black;
+}
+
+.obj-blink {
+    animation: 1s infinite blink-itX;
+    display: inline-block;
+}

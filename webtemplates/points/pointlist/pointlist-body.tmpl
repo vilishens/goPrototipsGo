@@ -1,0 +1,58 @@
+{{ define "pointlist-body" }}
+    <main role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <span id="pointListData">
+            </span>
+            <span id="pointList">
+            </span>
+        </div>
+{{/*
+<!--
+
+            {{ range $x := pointList.List }}
+               <div class="row mt-2">
+                    <div class="btn-group dropright">
+
+                        {{ $kika := index pointList.Data $x}}
+
+                        {{ $mika := $kika.Descr }} 
+
+                        {{ if $kika.Frozen }}
+                            <a class="btn btn-outline-danger dropdown-toggle" href="#" 
+                            role="button" id="pointChoice" data-toggle="dropdown" 
+                            data-toggle="tooltip" data-placement="right" title={{ $mika }}
+                            aria-haspopup="true" aria-expanded="false">                    
+                        {{ else if $kika.Active }}
+                            <a class="btn btn-outline-success dropdown-toggle" href="#" 
+                            role="button" id="pointChoice" data-toggle="dropdown" 
+                            data-toggle="tooltip" data-placement="right" title={{ $mika }}
+                            aria-haspopup="true" aria-expanded="false">                    
+                        {{ else }}             
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" 
+                            role="button" id="pointChoice" data-toggle="dropdown" 
+                            data-toggle="tooltip" data-placement="right" title={{ $mika }}
+                            aria-haspopup="true" aria-expanded="false">                    
+                        {{ end }}
+                            {{ $x }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="point/{{ $x }}/showcfg">Configuration</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+
+            {{ end }}
+
+-->
+*/}}
+    </main>
+{{ end }}

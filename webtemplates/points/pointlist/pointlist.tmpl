@@ -1,0 +1,26 @@
+{{define "pointlist"}}
+<!doctype html>
+<html lang="en">
+    <head>
+        {{ template "base-header" }}
+    
+        <!-- Custom styles for this template -->
+        <link href="{{ webPrefix }}plus/css/vk-misc.css" rel="stylesheet">
+        <link href="{{ webPrefix }}tmpls/points/pointlist/pointlist.css" rel="stylesheet">
+    </head>
+
+    <body onload="makeList();"> 
+     
+        {{ template "base-navigation" }}
+
+        {{ template "pointlist-body" }}   
+   
+        {{ template "base-footer" }}
+
+        {{ template "base-js" }}
+  
+        <script src="{{ webPrefix }}tmpls/points/pointlist/pointlist.js"></script>
+    </body>
+</html>
+
+{{end}}
