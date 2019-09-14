@@ -7,14 +7,14 @@ import (
 )
 
 const (
-	PointCmdBits             = 0xFFFF0000
-	PointCmdOptionBits       = 0x0000FFFF
-	PointCmdLoadCfgIntoPoint = 0x00010000
-	PointCmdSaveCfg          = 0x00020000
-	PointCmdStopCfg          = 0x00040000
-	PointCmdExitCfg          = 0x00080000
-	PointCmdFreezeOn         = 0x00100000
-	PointCmdFreezeOff        = 0x00200000
+	PointCmdBits             = 0xFFF0000
+	PointCmdOptionBits       = 0x000FFFF
+	PointCmdLoadCfgIntoPoint = 0x0010000
+	PointCmdSaveCfg          = 0x0020000
+	PointCmdStopCfg          = 0x0040000
+	PointCmdExitCfg          = 0x0080000
+	PointCmdFreezeOn         = 0x0100000
+	PointCmdFreezeOff        = 0x0200000
 )
 
 // constants for log
