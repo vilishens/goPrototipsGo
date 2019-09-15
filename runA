@@ -6,7 +6,7 @@ GO_ARDUINO_CMD="./goArduino"
 GO_REBOOT_CMD="sudo shutdown -r now"
 CD_RESTART=64 # restart application
 CD_REBOOT=32
-CD_UPDATE=4096 # update Go code and restart
+CD_UPDATE=65  # update Go code and restart
 GO_UPDATE_CMD="./updateCode"
 
 CD=$CD_RESTART

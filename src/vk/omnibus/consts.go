@@ -47,12 +47,12 @@ const (
 	DoneError        = 0x0000010
 	DoneReboot       = 0x0000020
 	DoneRestart      = 0x0000040
+	DoneUpdateGo     = 0x0000041
 	DoneStop         = 0x0000080
 	DonePostStop     = 0x0000100
 	DoneDisconnected = 0x0000200
 	DoneShutdown     = 0x0000400
 	DoneExit         = 0x0000800
-	DoneUpdateGo     = 0x0001000
 )
 
 const (
