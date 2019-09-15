@@ -1,4 +1,5 @@
 #!/bin/bash 
 
-exit 114
+../shell/total-Rasp/A-update-Go $(pwd)
 
+exit 0
