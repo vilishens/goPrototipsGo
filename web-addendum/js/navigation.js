@@ -32,3 +32,10 @@ $("#stationshutdown").on('click', function(){
     
     DoAjax(urlStr, {}, 500);
 })
+
+$("#stationupdatego").on('click', function(){
+
+    var urlStr = '/station/act/updatego';
+    
+    DoAjax(urlStr, {}, 500);
+})

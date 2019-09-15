@@ -4,9 +4,9 @@ GO_ARDUINO_PATH="/home/vilis/0_Dev/next/go"
 #GO_ARDUINO_CMD="go run -v goArduino.go"
 GO_ARDUINO_CMD="./goArduino"
 GO_REBOOT_CMD="sudo shutdown -r now"
-CD_RESTART=64 # paredzētais
+CD_RESTART=64 # restart application
 CD_REBOOT=32
-CD_UPDATE=4096
+CD_UPDATE=4096 # update Go code and restart
 GO_UPDATE_CMD="./updateCode"
 
 CD=$CD_RESTART
@@ -29,7 +29,7 @@ while [  $CD -eq $CD_RESTART ]; do
 
     echo
     echo '#####'
-    echo The AFTER  CD is $CD
+    echo The AFTER for Botvin CD is $CD
     echo '#####'
     echo
 

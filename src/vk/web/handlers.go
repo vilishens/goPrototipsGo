@@ -187,6 +187,8 @@ func handleStationAction(w http.ResponseWriter, r *http.Request) {
 		vomni.RootDone <- vomni.DoneShutdown
 	case "RESTART":
 		vomni.RootDone <- vomni.DoneRestart
+	case "UPDATEGO":
+		vomni.RootDone <- vomni.DoneUpdateGo
 	default:
 		log.Fatal(fmt.Sprintf("===> Don't know what to do with Station %q", todo))
 	}

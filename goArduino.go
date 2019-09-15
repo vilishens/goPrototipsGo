@@ -47,8 +47,11 @@ func main() {
 		case vomni.DoneReboot:
 			vutils.LogStr(vomni.LogInfo, "***** App - REBOOT *****")
 			end = true
-		case vomni.DoneUpdateCode:
-			vutils.LogStr(vomni.LogInfo, "***** App - UPDATE CODE *****")
+		case vomni.DoneUpdateGo:
+			vutils.LogStr(vomni.LogInfo, "***** App - UPDATE GO CODE *****")
+
+			fmt.Println("###\n###\n###\n###\n MARIO ", endCd)
+
 			end = true
 		default:
 			str := fmt.Sprintf("***** App - unknown Exit code %d *****", endCd)
@@ -57,6 +60,9 @@ func main() {
 		}
 
 		if end {
+
+			fmt.Println("###\n###\n###\n###\n EXIT code ", endCd)
+
 			os.Exit(endCd)
 		}
 	}

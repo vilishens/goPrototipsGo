@@ -52,7 +52,7 @@ const (
 	DoneDisconnected = 0x0000200
 	DoneShutdown     = 0x0000400
 	DoneExit         = 0x0000800
-	DoneUpdateCode   = 0x0001000
+	DoneUpdateGo     = 0x0001000
 )
 
 const (
