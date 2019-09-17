@@ -1,5 +1,10 @@
 #!/bin/bash 
 
-../shell/total-Rasp/A-update-Go $(pwd)
+BACK_DIR=$(pwd)
+SCRIPT_DIR="../shell/total-Rasp"
+SCRIPT_CMD="./A-update-Go"
+
+cd $SCRIPT_DIR
+$SCRIPT_CMD $BACK_DIR
 
 exit 0
