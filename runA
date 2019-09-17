@@ -29,28 +29,14 @@ while [  $CD -eq $CD_RESTART ]; do
 
     echo
     echo '#####'
-    echo The AFTER for Botvin CD is $CD
+    echo The AFTER CD is $CD
     echo '#####'
     echo
 
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-    echo
-
     if [ $CD -eq $CD_UPDATE ];  then
-	
+	    $GO_UPDATE_CMD	
 
-
-	CD=$CD_RESTART
+	    CD=$CD_RESTART
     fi	
 done
 

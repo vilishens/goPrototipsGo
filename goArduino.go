@@ -49,9 +49,6 @@ func main() {
 			end = true
 		case vomni.DoneUpdateGo:
 			vutils.LogStr(vomni.LogInfo, "***** App - UPDATE GO CODE *****")
-
-			fmt.Println("###\n###\n###\n###\n MARIO ", endCd)
-
 			end = true
 		default:
 			str := fmt.Sprintf("***** App - unknown Exit code %d *****", endCd)
@@ -60,9 +57,6 @@ func main() {
 		}
 
 		if end {
-
-			fmt.Println("###\n###\n###\n###\n EXIT code ", endCd)
-
 			os.Exit(endCd)
 		}
 	}
