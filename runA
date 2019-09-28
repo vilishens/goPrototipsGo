@@ -4,9 +4,11 @@ GO_ARDUINO_PATH="/home/vilis/0_Dev/next/go"
 #GO_ARDUINO_CMD="go run -v goArduino.go"
 GO_ARDUINO_CMD="./goArduino"
 GO_REBOOT_CMD="sudo shutdown -r now"
+GO_SHUTDOWN_CMD="sudo shutdown -h now"
 CD_RESTART=64 # restart application
 CD_REBOOT=32
 CD_UPDATE=65  # update Go code and restart
+CD_SHUTDOWN=66 # stop application and shutdown the station
 GO_UPDATE_CMD="./updateCode"
 
 CD=$CD_RESTART
@@ -48,8 +50,12 @@ echo goArduino.go finished
 echo '*****'
 echo
 
-if [  $CD -eq $CD_REBOOT  ]; then
+if [  $CD -eq $CD_REBOOT ]; then
 
     $GO_REBOOT_CMD
 
+fi
+
+if [ $CD -eq $CD_SHUTDOWN ]; then
+    $GO_SHUTDOWN_CMD
 fi

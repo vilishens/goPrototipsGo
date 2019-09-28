@@ -48,10 +48,10 @@ const (
 	DoneReboot       = 0x0000020
 	DoneRestart      = 0x0000040
 	DoneUpdateGo     = 0x0000041
+	DoneShutdown     = 0x0000042
 	DoneStop         = 0x0000080
 	DonePostStop     = 0x0000100
 	DoneDisconnected = 0x0000200
-	DoneShutdown     = 0x0000400
 	DoneExit         = 0x0000800
 )
 
