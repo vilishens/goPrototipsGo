@@ -316,6 +316,7 @@ func startSigned(chGoOn chan bool, chDone chan int, chErr chan error) {
 				pData.setState(vomni.PointStateSigned, true)
 				if pointStart {
 					pData.setState(vomni.PointStateDisconnected, false)
+					pData.setState(vomni.PointStateFrozen, false)
 				}
 
 				listHandled[point] = true

@@ -25,7 +25,6 @@ func init() {
 
 func (d RunInterface) GetCfgs() (cfgDefault interface{}, cfgRun interface{}, cfgSaved interface{},
 	cfgIndex interface{}, cfgState interface{}) {
-
 	dx := RunningData[d.Point]
 	return dx.CfgDefault, dx.CfgRun, dx.CfgSaved, dx.Index, dx.State
 }
@@ -270,13 +269,6 @@ func (d RunInterface) run(chGoOn chan bool, chDone chan int, chErr chan error) {
 
 			if cmdRestart == rc {
 				// restart the runArray routine with brand new data (not restart the point)
-
-				fmt.Printf("###===###===### SANEMU RESTART ###===###===### %v\n", stop)
-				fmt.Printf("###===###===### SANEMU RESTART ###===###===### %v\n", stop)
-				fmt.Printf("###===###===### SANEMU RESTART ###===###===### %v\n", stop)
-				fmt.Printf("###===###===### SANEMU RESTART ###===###===### %v\n", stop)
-				fmt.Printf("###===###===### SANEMU RESTART ###===###===### %v\n", stop)
-
 				break
 			}
 
@@ -285,6 +277,13 @@ func (d RunInterface) run(chGoOn chan bool, chDone chan int, chErr chan error) {
 				fmt.Println("***###*** AFTER RESTART ***###***")
 				fmt.Println("***###*** AFTER RESTART ***###***")
 			}
+
+			setFrozen := false
+			if vomni.PointCmdFreezeOn == rc {
+				setFrozen = true
+			}
+
+			d.SetState(vomni.DoneFrozen, setFrozen)
 
 			if vomni.DoneExit == rc || vomni.PointCmdStopCfg == rc {
 				zzz = len(allStages) - 1
@@ -301,8 +300,6 @@ func (d RunInterface) run(chGoOn chan bool, chDone chan int, chErr chan error) {
 				fmt.Printf("@@@\n@@@\n@@@ Karasj %q %d\n@@@\n@@@\n", d.Point, zzz)
 			}
 		}
-
-		fmt.Printf("***\n***\n*** Admiralis Katasonovs %q\n***\n***\n", d.Point)
 
 		if stop {
 			chDone <- vomni.DoneExit
@@ -326,12 +323,6 @@ func (d RunInterface) runArray(st stage, chDone chan int) {
 	}
 
 	*st.index = nextIndex(*st.index, len(st.cfg))
-
-	fmt.Printf("==> POINTE %q Pirmais Index %d\n", d.Point, *st.index)
-	fmt.Printf("==> POINTE %q Pirmais Index %d\n", d.Point, *st.index)
-	fmt.Printf("==> POINTE %q Pirmais Index %d\n", d.Point, *st.index)
-	fmt.Printf("==> POINTE %q Pirmais Index %d\n", d.Point, *st.index)
-	fmt.Printf("==> POINTE %q Pirmais Index %d\n", d.Point, *st.index)
 
 	for {
 
@@ -362,41 +353,24 @@ func (d RunInterface) runArray(st stage, chDone chan int) {
 		case cmd := <-RunningData[d.Point].ChCmd:
 
 			// Seit jāieliek msg apstrāde
-			fmt.Printf("Katehisiz %q >>>> 0x%08X\n", d.Point, cmd)
-			fmt.Printf("Katehisiz %q >>>> 0x%08X\n", d.Point, cmd)
-			fmt.Printf("Katehisiz %q >>>> 0x%08X\n", d.Point, cmd)
-
 			if vomni.PointCmdStopCfg == cmd {
 				if 0 < (RunningData[d.Point].State & vomni.PointStateStoppingNow) {
 					// this cfg is stopping now and received Exit code again, do nothing
 					done = 0
 				} else {
 					RunningData[d.Point].setState(vomni.PointStateStoppingNow, true)
-
-					fmt.Println("========================================================")
-					fmt.Println("========================================================")
-					fmt.Println("========================================================")
-					fmt.Println("========================================================")
-					fmt.Println("========================================================")
-					fmt.Println("========================================================")
-					fmt.Println("========================================================")
-
 					done = cmd
 				}
 			} else if (vomni.PointCmdFreezeOff == cmd) || (vomni.PointCmdFreezeOn == cmd) {
-				fmt.Println("###============== FREEZE ==========================================")
-				fmt.Println("###============== FREEZE ==========================================")
-				fmt.Println("###============== FREEZE ==========================================")
-				fmt.Println("###============== FREEZE ==========================================")
-				fmt.Println("###============== FREEZE ==========================================")
+
+				setState := false
+				if vomni.PointCmdFreezeOn == cmd {
+					setState = true
+				}
+				d.SetState(vomni.PointStateFrozen, setState)
+
 				done = cmd
 			} else if cmdRestart == cmd {
-				fmt.Println("###===###===###== RESTART ==###===###===###")
-				fmt.Println("###===###===###== RESTART ==###===###===###")
-				fmt.Println("###===###===###== RESTART ==###===###===###")
-				fmt.Println("###===###===###== RESTART ==###===###===###")
-				fmt.Println("###===###===###== RESTART ==###===###===###")
-				fmt.Println("###===###===###== RESTART ==###===###===###")
 				done = cmd
 			}
 
@@ -580,7 +554,7 @@ func (d *RunInterface) SetState(state int, on bool) {
 }
 
 func (d *RunInterface) GetState() (state int) {
-	return d.State
+	return RunningData[d.Point].State
 }
 
 func (d *RunInterface) setState(state int, on bool) {

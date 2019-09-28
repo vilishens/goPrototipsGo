@@ -52,6 +52,7 @@ const (
 	DoneStop         = 0x0000080
 	DonePostStop     = 0x0000100
 	DoneDisconnected = 0x0000200
+	DoneFrozen       = 0x0000400
 	DoneExit         = 0x0000800
 )
 
@@ -118,6 +119,7 @@ const (
 	PointStateSigned       = 0x000002
 	PointStateDisconnected = 0x000004
 	PointStateStoppingNow  = 0x000008
+	PointStateFrozen       = 0x000010
 
 	PointCfgStateUnknown     = 0x000000
 	PointCfgStateReady       = 0x000001

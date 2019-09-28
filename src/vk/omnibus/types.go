@@ -49,6 +49,7 @@ type WebPointData struct {
 	Type         int
 	Signed       bool
 	Disconnected bool
+	Frozen       bool
 	CfgList      []int
 	CfgInfo      map[int]CfgPlusData
 	CfgRun       map[int]interface{}

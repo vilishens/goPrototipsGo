@@ -6,6 +6,7 @@ var ITEM_BUTTON_ID_PREFIX = 'ptBtnItem';
 var ITEM_CLASS_DEFAULT = 'btn-outline-secondary';
 var ITEM_CLASS_SIGNED = 'btn-outline-success';
 var ITEM_CLASS_DISCONNECTED = 'btn-outline-secondary button-blink';
+var ITEM_CLASS_FROZEN = 'btn-outline-danger button-blink';
 
 var URL_LIST_ACTION_CONFIG = 'pointlist/act/cfg/';
 
@@ -247,7 +248,10 @@ function itemDataClass(name) {
 
     if(isDisconnected(name)) {
         cl = ITEM_CLASS_DISCONNECTED;
-    } else if(isSigned(name)) {
+    } else if(isFrozen(name)) {
+        cl = ITEM_CLASS_FROZEN;
+    } 
+       else if(isSigned(name)) {
         cl = ITEM_CLASS_SIGNED;
     }
 
@@ -258,6 +262,12 @@ function isDisconnected(name) {
     var item = allD["Data"][name];
 
     return (item["Signed"] && item["Disconnected"]);
+}
+
+function isFrozen(name) {
+    var item = allD["Data"][name];
+
+    return (item["Signed"] && item["Frozen"]);
 }
 
 function isSigned(name) {

@@ -25,6 +25,15 @@ func AllPointData() (data vomni.WebAllPointData) {
 		d.Signed = 0 != (v.Point.State & vomni.PointStateSigned)
 		d.Disconnected = 0 != (v.Point.State & vomni.PointStateDisconnected)
 
+		// jāizdomā, ko darīt ar punkta datiem
+		state := v.Run[1].GetState()
+		d.Frozen = 0 != (state & vomni.PointStateFrozen)
+
+		//st := v.Run
+		//keys := reflect.ValueOf(st).MapKeys()
+
+		//state := 2
+
 		d.CfgList = vomni.CfgListSequence
 		d.CfgInfo = webCfgInfo(d.CfgList) // ziņas par konfigurācijām: pāšlaik konfigurāciju nosaukumi
 
