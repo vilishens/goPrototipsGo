@@ -19,7 +19,7 @@ func AllPointData() (data vomni.WebAllPointData) {
 		d := vomni.WebPointData{}
 
 		d.Point = k
-		d.State = v.Point.State
+		d.State = v.Run[1].GetState()
 		d.Type = v.Point.Type
 
 		d.Signed = 0 != (v.Point.State & vomni.PointStateSigned)
