@@ -12,6 +12,7 @@ var URL_LIST_ACTION_CONFIG = 'pointlist/act/cfg/';
 
 var allD = {};
 var pointStates = {};
+var pointStatus = {};
 
 function makeList() {
     handlePointList()
@@ -74,7 +75,10 @@ function drawPointList() {
             }
         }
 
-        pointStates[name] = allD["Data"][name]["State"]
+//        pointStates[name] = allD["Data"][name]["State"]
+
+        saveStatus(allD);
+
 
 //        var vato = !(pointStates[name] == thisState );
 
@@ -82,6 +86,24 @@ function drawPointList() {
 
 
         wasName = name;
+    }
+}
+
+function saveStatus(d) {
+
+    pointStatus = {};
+
+    for(name in d) {
+        pointStatus[name] = {};
+    }    
+
+    for(name in d) {
+        pointStatus[name]["Point"] = allD["Data"][name]["Point"];
+        pointStatus[name]["Disconnected"] = allD["Data"][name]["Disconnected"];
+        pointStatus[name]["Frozen"] = allD["Data"][name]["Frozen"];
+        pointStatus[name]["Signed"] = allD["Data"][name]["Signed"];
+        pointStatus[name]["State"] = allD["Data"][name]["State"];
+        pointStatus[name]["Type"] = allD["Data"][name]["Type"];
     }
 }
 
@@ -202,25 +224,18 @@ function itemObject(name) {
 
 function changedItem(name) {
 
-    if(name in pointStates) {
+    if(name in pointStatus) {
         var now = allD["Data"][name]["State"];
-        var was = pointStates[name]; 
+        var was = pointStatus[name]; 
 
-        // šitas lieks
-        if(!(was == now)) {
-            var d = name;
-            var e =5;
+        for(fld in now) {
+            if (now[fld] != was[fld]) {
+                return false;
+            }
         }
-
-        return !(was == now);
     }
 
     return true;
-
-//    var item = itemObjectButton(name);
-//    var cl = itemDataClass(name);
-
-//    return !hasMyClasses(item, cl)
 }
 
 function itemObjectButton(name) {
