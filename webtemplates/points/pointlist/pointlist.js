@@ -240,7 +240,7 @@ function changedItem(name) {
     var needClass = itemDataClass(name);
 
     var classes = {};
-    obj.attr('class').split(' ')).each(function() { 
+    obj.attr('class').split(' ').each(function() { 
         if (this !== '') {
             classes[this] = this;
         }    
