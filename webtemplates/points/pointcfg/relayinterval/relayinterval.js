@@ -409,8 +409,9 @@ function equalRows(rows, d) {
 
 function drawPage() {
     drawTitle();
+    drawButtons();
     if(FirstLoad) {
-        drawButtons();
+//        drawButtons();
         setHandlersAndParams();
         FirstLoad = false;
     }    
