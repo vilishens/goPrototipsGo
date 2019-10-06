@@ -241,19 +241,25 @@ function changedItem(name) {
 
     var classes = {};
     classes = obj.attr('class').split(' ');
+    var classStr = obj.attr('class');
 //    obj.attr('class').split(' ').each(function() { 
 //        if (this !== '') {
 //            classes[this] = this;
 //        }    
 //    });
- 
-    var needNew = true;
-    for(z in classes) {
-        if(classes[z] == needClass) {
-            needNew = false;
-            break;
-        }
+    
+    var needNew = false;
+    if(classStr.indexOf(needClass) == -1) {
+        // the required class isn't found, update necessary
+        needNew = true;
     }
+ 
+//    for(z in classes) {
+//        if(classes[z] == needClass) {
+//            needNew = false;
+//            break;
+//       }
+//    }
 
     return needNew; 
 
