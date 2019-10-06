@@ -77,7 +77,7 @@ function drawPointList() {
 
 //        pointStates[name] = allD["Data"][name]["State"]
 
-        saveStatus(allD);
+        saveStatus(allD["data"]);
 
 
 //        var vato = !(pointStates[name] == thisState );
@@ -98,12 +98,12 @@ function saveStatus(d) {
     }    
 
     for(name in d) {
-        pointStatus[name]["Point"] = allD["Data"][name]["Point"];
-        pointStatus[name]["Disconnected"] = allD["Data"][name]["Disconnected"];
-        pointStatus[name]["Frozen"] = allD["Data"][name]["Frozen"];
-        pointStatus[name]["Signed"] = allD["Data"][name]["Signed"];
-        pointStatus[name]["State"] = allD["Data"][name]["State"];
-        pointStatus[name]["Type"] = allD["Data"][name]["Type"];
+        pointStatus[name]["Point"] = d[name]["Point"];
+        pointStatus[name]["Disconnected"] = d[name]["Disconnected"];
+        pointStatus[name]["Frozen"] = d[name]["Frozen"];
+        pointStatus[name]["Signed"] = d[name]["Signed"];
+        pointStatus[name]["State"] = d[name]["State"];
+        pointStatus[name]["Type"] = d[name]["Type"];
     }
 }
 
