@@ -230,12 +230,12 @@ function changedItem(name) {
 
         for(fld in now) {
             if (now[fld] != was[fld]) {
-                return false;
+                return true;
             }
         }
     }
 
-    return true;
+    return false;
 }
 
 function itemObjectButton(name) {
