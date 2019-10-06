@@ -235,6 +235,13 @@ function changedItem(name) {
         }
     }
 
+    // check which class is used by the point item
+    var obj = itemObject(name);
+    var needClass = itemDataClass(name);
+    if(!obj.hasClass(needClass)) {
+        return true;
+    }
+
     return false;
 }
 
