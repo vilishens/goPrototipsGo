@@ -519,7 +519,7 @@ function drawBtnFreeze(btn) {
 
     setFreezeButtonOff();
 
-    if(editState() || FirstLoad) {
+    if(editState()) {
         setButtonInactive(btn);
     } else if (AllD["Frozen"]) {
         setFreezeButtonOn();
