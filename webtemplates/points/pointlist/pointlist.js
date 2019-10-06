@@ -238,6 +238,14 @@ function changedItem(name) {
     // check which class is used by the point item
     var obj = $('#' + listItemBtnId(name));
     var needClass = itemDataClass(name);
+
+    var classes = {};
+    obj.attr('class').split(' ')).each(function() { 
+        if (this !== '') {
+            classes[this] = this;
+        }    
+    });
+ 
     if(!obj.hasClass(needClass)) {
         return true;
     }
