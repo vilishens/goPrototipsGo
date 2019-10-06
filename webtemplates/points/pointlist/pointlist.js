@@ -240,17 +240,29 @@ function changedItem(name) {
     var needClass = itemDataClass(name);
 
     var classes = {};
-    obj.attr('class').split(' ').each(function() { 
-        if (this !== '') {
-            classes[this] = this;
-        }    
-    });
+    classes = obj.attr('class').split(' ');
+//    obj.attr('class').split(' ').each(function() { 
+//        if (this !== '') {
+//            classes[this] = this;
+//        }    
+//    });
  
-    if(!obj.hasClass(needClass)) {
-        return true;
+    var hasNeed = false;
+    for(z in classes) {
+        if(classes[z] == needClass) {
+            hasNeed = true;
+            break;
+        }
     }
 
-    return false;
+    return hasNeed; 
+
+//    
+//    if(!obj.hasClass(needClass)) {
+//        return true;
+//    }
+//
+//    return false;
 }
 
 function itemObjectButton(name) {
