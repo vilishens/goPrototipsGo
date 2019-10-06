@@ -247,15 +247,15 @@ function changedItem(name) {
 //        }    
 //    });
  
-    var hasNeed = false;
+    var needNew = true;
     for(z in classes) {
         if(classes[z] == needClass) {
-            hasNeed = true;
+            needNew = false;
             break;
         }
     }
 
-    return hasNeed; 
+    return needNew; 
 
 //    
 //    if(!obj.hasClass(needClass)) {
