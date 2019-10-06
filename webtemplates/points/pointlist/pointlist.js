@@ -77,7 +77,7 @@ function drawPointList() {
 
 //        pointStates[name] = allD["Data"][name]["State"]
 
-        saveStatus(allD["data"]);
+        saveStatus(allD["Data"]);
 
 
 //        var vato = !(pointStates[name] == thisState );
